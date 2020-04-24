@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Git repositories</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/listr.pack.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/jquery.filer.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/custom.css')}}">
+</head>
+<body dir="ltr">
+  <div class="container">
+    <input type="hidden" id="dirpath" value="{{ path }}">
+    <div class="row">
+      <div class="col-xs-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{url_for('path_view')}}"><i class="fa fa-fw fa-home fa-lg"></i> </a></li>
+            <li style="display: inline;"><div class="btn btn-secondary text-muted" onclick="newRepo();">New</div></li>
+            <li id="logout"><a href="/logout" title="Logout"><i class="fa fa-fw fa-sign-out fa-lg"></i></a></li>
+        </ol>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table id="listr-table" class="table table-hover">
+        <tbody>
+          {% if contents %}
+            {% for entry in contents %}
+          <tr class="item-row file-item" id="{{ entry.name }}">
+              <td class="text-xs-left" data-sort-value="dir-{{entry.name | lower}}">
+                <i class="fa fa-fw fa-archive " aria-hidden="true"></i>&nbsp;
+                <div class="tooltip">
+                  <strong>{{ entry.name }}</strong>
+                  <span class="tooltiptext">git clone berar@<span class="url_root"></span>:{{ git_root }}/{{ entry.clone }}</span>
+                </div>
+              </td>
+          </tr>
+            {% endfor %}
+         {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script type="text/javascript" src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='js/tether.min.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='js/listr.pack.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='js/jquery.filer.min.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='js/custom.js')}}"></script>
+</body>
+</html>
+
+

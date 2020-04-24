@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="generator" content="Bootstrap Listr">
+  <title>Login</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/listr.pack.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/custom.css')}}">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <form name="loginfrm" id="login-frm" method="POST" action="/login" autocomplete="off" autofocus>
+              <input type="hidden" name="server_msg" value="{{ message }}" id="server_msg"/>
+              <br>
+              <br>
+              <input type = "password" name = "password" placeholder="Password" id="passw"/>
+              <input type = "submit" value="Login">
+              <button type="button" onclick="admin_cmd('shutdown');">Shutdown</button>
+              <br>
+              <br>
+          </form>
+        </div>
+      </div>
+        <div class="col-xs-12" id="msg-placeholder"></div>
+    </div>
+  </div>
+  <script type="text/javascript" src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='js/admin.js')}}"></script>
+</body>
+</html>
+
+
